@@ -1,0 +1,16 @@
+{
+    
+    "email":"Email",
+    "name":"Nom & Prenom",
+    "phone":"Telephone",
+    "adress":"Adresse",
+    
+    "password":"Mot de passe",
+    "login":"Se connecter",
+    "Register":"S'authentifier",
+    "return":"Retouner"
+
+
+
+
+}

@@ -1,0 +1,14 @@
+{
+    "email":"Email",
+    "name":"First name & Last name",
+    "phone":"Phone",
+    "adress":"Adress",
+
+    "login":"Login",
+    "password":"Password",
+    "Register":"Register",
+    "return":"Return"
+
+    
+
+}
