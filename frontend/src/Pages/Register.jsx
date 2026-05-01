@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import{User,Mail,MapPinHouse,Phone} from 'lucide-react';
 import logoSmall from '../assets/logoSmall.png'
-
+import LogoAnimation from '../assets/LogoVid.mp4'
 const Register = () => {
 
 const{t}=useTranslation();
@@ -30,6 +30,7 @@ const{t}=useTranslation();
   <div className='flex gap-2 items-center'><User  size={14} className=' text-gray-500'/><label htmlFor="" className='text-sm text-gray-500'>{t('name')}:</label></div>
         
         <input type="text" 
+        placeholder='Verrill Duclos'
         className='border border-gray-300 rounded-lg hover:border-blue-600 focus:border-blue-600 outline-none pl-2 p-1'
         />
     </div>
@@ -89,7 +90,12 @@ const{t}=useTranslation();
 
         {/* Right Side */}
 <div className='hidden  w-1/2 h-full sm:block bg-white '>
-   <a href="#"><img src={logoSmall} alt="Logo" className='hidden md:block w-full h-full object-cover transition-transform duration-300 hover:scale-110'/></a> 
+   {/* <a href="#"><img src={logoSmall} alt="Logo" className='hidden md:block w-full h-full object-cover transition-transform duration-300 hover:scale-110'/></a>  */}
+   <div className='flex items-center justify-center h-full '>
+   <video width="420" height="360"  autoPlay muted loop className='h-48'>
+      <source src={LogoAnimation} type="video/mp4" />
+    </video>
+    </div>
 </div>
     </div>
   )
