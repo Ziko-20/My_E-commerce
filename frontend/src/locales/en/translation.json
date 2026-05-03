@@ -8,7 +8,16 @@
     "password":"Password",
     "Register":"Register",
     "return":"Return",
-    "createacc":"Don't have an account? Create one"
+    "createacc":"Don't have an account? Create one",
+
+    "addToCart":"Add to cart",
+    "filtrer":"Filter",
+    
+    "products":"Products" ,
+    "cart":"Cart",
+    "profil":"Profil",
+    "contactersupp":"Contact Support"
+
 
     
 

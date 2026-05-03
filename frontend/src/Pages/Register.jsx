@@ -65,7 +65,7 @@ const{t}=useTranslation();
   <input
     type="tel"
     name="telephone"
-    placeholder="  6 12 34 56 78"
+    placeholder="6 12 34 56 78"
     className='border border-gray-300 rounded-lg hover:border-blue-600 focus:border-blue-600 outline-none w-full pl-2 p-1'
   /></div></div>
 </div>

@@ -4,6 +4,7 @@ import Login from "./Pages/Login"
 import Register from "./Pages/Register"
 import Products from "./Pages/Products"
 import NotFound from "./Pages/NotFound"
+import Navbar from './Layouts/Navbar'
 import { animate, AnimatePresence } from "framer-motion"
 import TransitionRegister from "./components/TransitionRegister"
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/register" element={<TransitionRegister><Register/></TransitionRegister>}/>
       <Route path="/products" element={<Products/>}/>
       <Route path="/profil" element={<Profil/>}/>
+      <Route path="/navbar" element={<Navbar/>}/>
       <Route path="*" element={<NotFound />}/>
     </Routes>
     </AnimatePresence>

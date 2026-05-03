@@ -9,7 +9,18 @@
     "login":"Se connecter",
     "Register":"S'authentifier",
     "return":"Retouner",
-    "createacc":"Vous n'avez pas de compte ? Créez-en un"
+    "createacc":"Vous n'avez pas de compte ? Créez-en un",
+
+    "addToCart":"Ajouter au panier",
+    "filtrer":"Filtrer"
+    ,
+    
+    
+    "products":"Produits",
+    "cart":"Panier",
+    "profil":"Profile",
+    "contactersupp":"Contacter Support"
+
 
 
 
