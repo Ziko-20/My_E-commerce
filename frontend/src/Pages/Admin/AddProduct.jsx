@@ -7,9 +7,11 @@ const AddProduct = () => {
 const {t}=useTranslation();
   return (
     
-    <div className='  flex flex-row h-screen p-10 m-2 gap-2'>
+    <div className=' '>
+       {/*  Formulaire d ajout */}
+      <form action="" className='  flex flex-row h-screen p-10 m-2 gap-2'>
 {/* Image */}
-      <div className='border w-1/2 h-[75%] rounded-2xl h-full'>
+      <div className='border w-1/2  rounded-2xl h-full'>
 <ImagePlus />
       </div>
 
@@ -57,7 +59,7 @@ const {t}=useTranslation();
 
       </div>
    </div>
-
+</form>
     </div>
   )
 }
