@@ -17,7 +17,14 @@
     "cart":"Cart",
     "profil":"Profil",
     "contactersupp":"Contact Support",
-    "category":"Category"
+    "category":"Category",
+
+    "Nomproduit":"Product Name",
+"categoryproduit":"Category",
+"descriptionproduit":"Description",
+"ratingproduit":"Rating",
+"prixproduit":"Price",
+"quantiteproduit":"Quantity in stock"
 
 
     

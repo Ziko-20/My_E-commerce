@@ -20,7 +20,14 @@
     "cart":"Panier",
     "profil":"Profile",
     "contactersupp":"Contacter Support",
-    "category":"Categorie"
+    "category":"Categorie",
+
+    "Nomproduit":"Nom du Produit",
+"categoryproduit":"Catégorie",
+"descriptionproduit":"Description",
+"ratingproduit":"Note",
+"prixproduit":"Prix",
+"quantiteproduit":"Quantité en stock"
 
 
 
