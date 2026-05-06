@@ -9,10 +9,7 @@ use App\Models\Wishlist;
 
 class Produit extends Model
 {
-    protected $fillable=["nom_prduit",
-"description_prduit",
-"prix",
-"stock_produit"];
+    protected $fillable=["nom_produit","description_prduit","prix","stock_produit"];
 
     public function categorie() {
     return $this->belongsTo(Categorie::class);
