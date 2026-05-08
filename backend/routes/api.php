@@ -9,11 +9,11 @@ use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\LigneCommandeController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminProduitController;
-use App\Http\Controllers\AdminCategorieController;
-use App\Http\Controllers\AdminClientController;
-use App\Http\Controllers\AdminCommandeController;
-use App\Http\Controllers\AdminStatsController;
+use App\Http\Controllers\AdminControllers\AdminProduitController;
+use App\Http\Controllers\AdminControllers\AdminCategorieController;
+use App\Http\Controllers\AdminControllers\AdminClientController;
+use App\Http\Controllers\AdminControllers\AdminCommandeController;
+use App\Http\Controllers\AdminControllers\AdminStatsController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
