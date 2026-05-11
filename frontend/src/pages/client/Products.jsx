@@ -4,26 +4,86 @@ import Navbar from '../../components/Navbar';
 import { getProduits } from '../../services/productService';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { getCategories } from '../../services/productService';
+import { getProduitsFilter } from '../../services/productService'; 
+
+import { useCart } from '../../context/CartContext';
+import { ajouterLigne } from '../../services/productService';
+
 const Products = () => {
   
   const {t}=useTranslation();
   const [loading, setLoading] = useState(true);
   const [panier,setPanier]=useState();
   const navigate=useNavigate();
+  const [search,setSearch]=useState('');
+  const[categories, setCategories]=useState([]);
+  const[categorieId, setCategorieId]=useState('');
+  const[prixMax,setPrixMax]=useState('');
+
+  const [page,setPage] =useState(1);
+  const [lastPage,setLastPage] =useState(1);
 
   const [produits,setProduits]=useState([]);
 
+
+ 
+
   useEffect(()=>{
-    getProduits()
+
+    /* getProduits()
     .then((response)=>{
       console.log(response.data.data);
       
       setProduits(response.data.data);
 
-      setLoading(false);})
+      setLoading(false);}); */
+
+      getCategories().then((response) => {
+
+    setCategories(response.data.data);
+     
+  });
     
 
-  },[])
+  },[categorieId,search,prixMax])
+
+  useEffect(() => {
+  getProduitsFilter(search, prixMax, categorieId, page).then((response) => {
+    
+    setProduits(response.data.data.data );
+     
+    setLastPage(response.data.data.last_page);
+    setLoading(false);
+   
+  });
+
+}, [search, prixMax, categorieId, page]);
+useEffect(() => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}, [page]);
+
+  //add to cart
+  
+  const { getPanierID } = useCart();
+
+  const handleAjouterAuPanier = async (produitId) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert("Connecte-toi d'abord !");
+      navigate('/');
+      return;
+    }
+    try {
+      const id = await getPanierID(); // cree ou recup le panier
+      await ajouterLigne(id, produitId, 1);
+      alert('Produit ajouté au panier ✅');
+    } catch (err) {
+      alert('Erreur : ' + (err.response?.data?.message || 'Stock insuffisant'));
+    }
+  };
+
+
   return (
      <div className="min-h-screen bg-[#f8f9ff]">
       <Navbar />
@@ -40,19 +100,29 @@ const Products = () => {
               type="text"
               className="w-full border border-gray-200 bg-white pl-11 pr-4 h-12 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-100 placeholder:text-gray-400 text-sm"
               placeholder="Rechercher votre produit par son nom"
+              value={search}
+              onChange={(e)=>{setSearch(e.target.value)}}
             />
           </div>
 
           {/* Filtration */}
           <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-2xl px-4 h-12 shadow-sm">
             <Funnel size={16} className="text-gray-400" />
-                <select className="text-sm text-gray-600 bg-transparent focus:outline-none cursor-pointer">
+                <select className="text-sm text-gray-600 bg-transparent focus:outline-none cursor-pointer"
+                value={categorieId} 
+                onChange={(e) => setCategorieId(e.target.value)}>
 
-              <option value="">{t('filtrer')}</option>
-              <option value="">Categorie 1</option>
-              <option value="">Categorie 2</option>
-              <option value="">Categorie 3</option>
+              <option value="">Toutes les catégories</option>
+              {categories.map((c) => (
+    <option key={c.id} value={c.id}>{c.categorie}</option>
+  ))}
             </select>
+            <input
+  type="number"
+  value={prixMax}
+  onChange={(e) => setPrixMax(e.target.value)}
+  placeholder="Prix max"
+/>
           </div>
 
         </div>
@@ -68,7 +138,7 @@ const Products = () => {
               <div
                 key={p.id}
                 className="flex  bg-white flex-col border border-gray-100  rounded-xl  p-5  hover:shadow-md transition-shadow   duration-200 cursor-pointer"
-                onClick={()=>{navigate(`/products/${p.id}`)}}
+                onClick={()=>{navigate(`/produits/${p.id}`)}}
               >
 
                 {/* Stock */}
@@ -110,8 +180,12 @@ const Products = () => {
 
                 {/* Boutttttttton */}
                 <button
-                /* onClick={() => { }} */
+                 
                   type="button"
+                  onClick={(e)=>{
+                    e.stopPropagation();
+                    handleAjouterAuPanier(p.id);
+                  }}
                   className="flex items-center justify-center gap-2 w-full  font-semibold text-white bg-green-500 hover:bg-green-700  rounded-xl p-2.5 mt-3 transition-all duration-200 text-sm hover:-translate-y-0.5"
                 >
                   <ShoppingCart size={16} />
@@ -124,9 +198,38 @@ const Products = () => {
         )}
 
       </div>
+      <div className="flex justify-center gap-2 mt-8 pb-4">
+  
+  <button
+    onClick={() => setPage(page - 1)}
+    disabled={page === 1}
+    className="px-4 py-2 rounded-xl border text-sm disabled:opacity-40"
+  >
+    ←
+  </button>
+
+  {/* Numéros de pages */}
+  {Array.from({ length: lastPage }, (_, i) => i + 1).map((p) => (
+    <button
+      key={p}
+      onClick={() => setPage(p)}
+      className={`px-4 py-2 rounded-xl border text-sm ${page === p ? 'bg-blue-600 text-white' : 'text-gray-600'}`}
+    >
+      {p}
+    </button>
+  ))}
+ 
+  <button
+    onClick={() => setPage(page + 1)}
+    disabled={page === lastPage}
+    className="px-4 py-2 rounded-xl border text-sm disabled:opacity-40"
+  >
+    →
+  </button>
+</div>
     </div>
   );
 }
 
-export default Products
+export default Products;
 

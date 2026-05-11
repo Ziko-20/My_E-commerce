@@ -3,10 +3,10 @@ import{Mail,KeyRound} from 'lucide-react';
 import logoSmall from '../../assets/logoSmall.png';
 import BgRemovedLogooo from '../../assets/BgRemovedLogooo.jpeg';
 import { useTranslation } from 'react-i18next';
-import LogoAnimation from '../../assets/LogoAnimation.mp4'
-import { Link } from 'react-router-dom'
+/* import LogoVidV2 from '../../assets/LogoVidV2.mp4'
+ */import { Link } from 'react-router-dom'
 import{login} from '../../services/authService';
-
+import logoEcommWhite from '../../assets/logoEcommWhite.png';
 const Login = () => {
   const { t } = useTranslation();
 
@@ -26,9 +26,10 @@ const Login = () => {
 <div className='hidden  w-1/2 h-full sm:block bg-white '>
    {/*<a href="#"><img src={logoSmall} alt="Logo" className='hidden md:block w-full h-full object-cover transition-transform duration-300 hover:scale-110'/></a>*/}
    <div className='flex items-center justify-center h-full '>
-   <video width="420" height="360"  autoPlay muted loop className='h-48'>
-      <source src={LogoAnimation} type="video/mp4" />
-    </video>
+   {/* <video width="420" height="360"  autoPlay muted loop className='h-48'>
+      <source src={LogoVidV2} type="video/mp4" />
+    </video> */}
+    <img src={logoEcommWhite} alt="logoEcomm" />
     </div>
 </div>
 

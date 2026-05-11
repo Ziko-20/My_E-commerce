@@ -1,5 +1,5 @@
 import React from 'react';
-import TechStoreremovebgpreview from '../assets/TechStoreremovebgpreview.png';
+import logoCadree from '../assets/logoCadree.png';
 import { useTranslation } from 'react-i18next';
  
 import { Languages } from 'lucide-react';
@@ -12,9 +12,9 @@ const Navbar = () => {
   return (
     
     <div className='bg-white flex justify-between h-18'>
-      <nav className=''>
+      <nav className='flex justify-center items-center pl-12'>
         {/* Logo */}
-        <a href="" className=''><img src={TechStoreremovebgpreview} alt="" className='w-auto h-16 m-2 p-2 '/></a>
+        <a href="" className=''><img src={logoCadree} alt="" className='w-auto h-8 m-x-auto'/></a>
       </nav>
 
 

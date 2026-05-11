@@ -17,23 +17,23 @@ class ProduitController extends Controller
 
 
 /* recherche de produit par nom */
-        if($request->has('nom_produit')){
-            $query->where('nom','like','%'.$request->nom_produit.'%');
+        if($request->filled('nom_produit')){
+            $query->where('nom_prduit', 'like', '%'.$request->nom_produit.'%');
         }
 
 
 /* filtretion par prix inferieur ou egal au prix donnee par l utilisateur */
-        if($request->has('prix')){
+        if($request->filled('prix')){
             $query->where('prix', '<=', $request->prix);
         }
 
 /* Filtration par categorie */        
 
-        if($request->has('categorie')){
-            $query->where('categorie','='.$request->categorie);
+        if($request->filled('categorie')){
+            $query->where('categorie_id', '=', $request->categorie);    
         }
 
-        $produits=$query->get();
+        $produits=$query->paginate(12);
         return response()->json([
             "success"=>true,
             "data"=>$produits

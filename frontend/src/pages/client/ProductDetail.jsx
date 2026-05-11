@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import { ArrowLeft, ShoppingCart, Star } from 'lucide-react';
-
+import { getProduitById } from '../../services/productService';
 import Navbar from '../../components/Navbar';
 
 const ProductDetail = () => {
@@ -14,10 +14,10 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/products/${id}`)
-      .then(res => res.json())
-      .then(data => { setProduit(data); setLoading(false); })
-      .catch(() => setLoading(false)); 
+    getProduitById(id)
+      .then((response)=>{setProduit(response.data.data);setLoading(false);})
+      
+       
   }, [id]);
 
   if (loading) return <div className="flex justify-center items-center h-screen text-gray-400">Chargement...</div>; 
@@ -36,33 +36,33 @@ const ProductDetail = () => {
         <div className="bg-white rounded-2xl p-8 shadow-sm grid md:grid-cols-2 gap-10">
 
           {/* imaAAAAAAAAAAAAAAAEGE */}
-          <div className="flex items-center justify-center bg-gray-50 rounded-xl h-80">
-            <img src={produit.thumbnail} alt={produit.title} className="h-full object-contain p-4" />
+          <div className="flex items-center justify-center  rounded-xl h-80">
+            <img src={produit.image} alt={produit.nom_prduit} className="h-full object-contain p-4" />
           </div>
 
           {/* descriptionn */}
           <div className="flex flex-col gap-4">
-            <span className="text-xs text-blue-500 font-medium uppercase">{produit.category}</span>
-            <h1 className="text-2xl font-bold text-gray-800">{produit.title}</h1>
-            <p className="text-gray-400 text-sm">{produit.description}</p>
+           {/*  <span className="text-xs text-blue-500 font-medium uppercase">{produit.categorie_id}</span> */}
+            <h1 className="text-2xl font-bold text-gray-800">{produit.nom_prduit}</h1>
+            <p className="text-gray-400 text-sm">{produit.description_prduit}</p>
 
             {/* Note */}
-            <div className="flex items-center gap-1">
+            {/* <div className="flex items-center gap-1">
               <Star size={16} className="text-yellow-400 fill-yellow-400" />
               <span className="text-sm font-medium">{produit.rating}</span>
-            </div>
+            </div> */}
 
             {/* Stock */}
             <span className={`text-xs w-fit font-medium px-3 py-1 rounded-full ${
 
-               produit.stock> 50 ? 'bg-green-50 text-green-600' :
-              produit.stock> 10 ? 'bg-amber-50 text-amber-600' : 'bg-red-50 text-red-500'
+               produit.stock_produit> 50 ? 'bg-green-50 text-green-600' :
+              produit.stock_produit> 10 ? 'bg-amber-50 text-amber-600' : 'bg-red-50 text-red-500'
             }`}>
-              {produit.stock} en stock
+              {produit.stock_produit} en stock
             </span>
 
             {/* Prix */}
-            <p className="text-3xl font-bold text-gray-800">{produit.price} DH</p>
+            <p className="text-3xl font-bold text-gray-800">{produit.prix} DH</p>
 
         <button 
         className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-700 text-white font-semibold rounded-xl p-3 transition-all duration-200 hover:-translate-y-0.5">

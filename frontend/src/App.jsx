@@ -25,10 +25,14 @@ import AdminCategories from './Pages/admin/AdminCategories';
 import AdminClients from './Pages/admin/AdminClients';
 import AdminCommandes from './Pages/admin/AdminCommandes';
 
+
+import { CartProvider } from './context/CartContext';
+
 function App() {
   const location = useLocation();
 
   return (
+    <CartProvider>
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
 
@@ -59,6 +63,7 @@ function App() {
 
       </Routes>
     </AnimatePresence>
+    </CartProvider>
   );
 }
 
