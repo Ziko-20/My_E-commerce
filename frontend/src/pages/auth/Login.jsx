@@ -1,22 +1,30 @@
-import {React,useState} from 'react'
+import React, { useState } from 'react'
 import{Mail,KeyRound} from 'lucide-react';
-import logoSmall from '../assets/logoSmall.png';
-import BgRemovedLogooo from '../assets/BgRemovedLogooo.jpeg';
+import logoSmall from '../../assets/logoSmall.png';
+import BgRemovedLogooo from '../../assets/BgRemovedLogooo.jpeg';
 import { useTranslation } from 'react-i18next';
-import LogoAnimation from '../assets/LogoAnimation.mp4'
+import LogoAnimation from '../../assets/LogoAnimation.mp4'
 import { Link } from 'react-router-dom'
+import{login} from '../../services/authService';
 
 const Login = () => {
   const { t } = useTranslation();
 
     const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
+  //login 
+    const handleSubmit=async(e)=>{
+      e.preventDefault();
+      const response=await login({email,password});
+      console.log(response.data);
+    }
+
   return (
     <div className='w-full flex h-screen '>
 
        {/* left */}
 <div className='hidden  w-1/2 h-full sm:block bg-white '>
-   {/* <a href="#"><img src={logoSmall} alt="Logo" className='hidden md:block w-full h-full object-cover transition-transform duration-300 hover:scale-110'/></a>  */}
+   {/*<a href="#"><img src={logoSmall} alt="Logo" className='hidden md:block w-full h-full object-cover transition-transform duration-300 hover:scale-110'/></a>*/}
    <div className='flex items-center justify-center h-full '>
    <video width="420" height="360"  autoPlay muted loop className='h-48'>
       <source src={LogoAnimation} type="video/mp4" />
@@ -26,7 +34,7 @@ const Login = () => {
 
 {/* right */}
       <div className='w-1/2 bg-gray-100 h-full'>
-      <form action="" className='flex  flex-col items-center justify-center h-full gap-6'>
+      <form   className='flex  flex-col items-center justify-center h-full gap-6' onSubmit={handleSubmit}>
 
 {/* EMAIL */}
 <div className='flex flex-col gap-2 w-1/2 '>
@@ -35,22 +43,26 @@ const Login = () => {
         <input type="text" 
         className='border border-gray-300 rounded-lg hover:border-blue-600 focus:border-blue-600 outline-none pl-2 p-1'
         placeholder='exemple@gmail.com'
+        onChange={(e) => setEmail(e.target.value)}
         /></div>
 
 {/* Password */}
 <div className='flex flex-col gap-2 w-1/2 '>
   <div className='flex gap-2 items-center'><KeyRound  size={14} className=' text-gray-500' /><label htmlFor="" className='text-sm text-gray-500'>{t('password')}:</label></div>
         
-        <input type="text" 
+        <input type="password" 
+
         className='border border-gray-300 rounded-lg hover:border-blue-600 focus:border-blue-600 outline-none pl-2 p-1'
+        onChange={(e) => setPassword(e.target.value)}
         placeholder='*********************'
-        /></div>        
+        />
+        </div>        
 
 
 
 {/* Button */}   
 <div className='w-[50%] flex flex-col justify-center'>    
-        <button /* onClick={submit} */ className='border  bg-blue-600 text-white font-bold w-full rounded-lg pl-2 p-1 hover:bg-blue-400'>
+        <button  type='submit' className='border  bg-blue-600 text-white font-bold w-full rounded-lg pl-2 p-1 hover:bg-blue-400'>
         {t('login')}
         
         </button>

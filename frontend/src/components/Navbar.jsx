@@ -21,10 +21,10 @@ const Navbar = () => {
 {/* Les Liens */}
       <div className="flex items-center justify-end gap-6 pr-8  ">
 
-    <a href="#" class=" hover:font-medium text-gray-500 hover:text-gray-900 text-sm">{t('products')}</a> 
-    <a href="#" class=" hover:font-medium text-gray-500 hover:text-gray-900 text-sm">{t('cart')}</a>
-    <a href="#" class=" hover:font-medium text-gray-500 hover:text-gray-900 text-sm">{t('profil')}</a>
-    <a href="#" class=" hover:font-medium text-gray-500 hover:text-gray-900 text-sm">{t('contactersupp')}</a>
+    <a href="#" className=" hover:font-medium text-gray-500 hover:text-gray-900 text-sm">{t('products')}</a> 
+    <a href="#" className=" hover:font-medium text-gray-500 hover:text-gray-900 text-sm">{t('cart')}</a>
+    <a href="#" className=" hover:font-medium text-gray-500 hover:text-gray-900 text-sm">{t('profil')}</a>
+    <a href="#" className=" hover:font-medium text-gray-500 hover:text-gray-900 text-sm">{t('contactersupp')}</a>
 <div className='flex items-center gap-1 text-gray-700'>
     <Languages size={18} className='text-gray-500 '/><select value={i18n.language}
             onChange={handleChange} className='text-sm text-gray-700 outline-none cursor-pointer bg-transparent'>

@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->string('description_prduit');
                 $table->decimal('prix',8,2);
                 $table->integer('stock_produit');
+                $table->string('image')->nullable(); 
                 $table->foreignId('categorie_id')->constrained()->onDelete('cascade');
                 $table->timestamps();
         } );

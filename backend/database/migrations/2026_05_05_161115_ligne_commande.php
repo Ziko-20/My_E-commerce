@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ligne_commande',function (Blueprint $table){
+        Schema::create('ligne_commandes',function (Blueprint $table){
                 $table->id();
 
                 $table->foreignId('produit_id')->constrained('produits')->onDelete('cascade');

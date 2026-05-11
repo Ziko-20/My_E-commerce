@@ -12,10 +12,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Commande;
 use App\Models\Wishlist;
-
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
+    
+use HasFactory;
 
     protected $fillable = ['name', 'email', 'telephone', 'adresse', 'password', 'role']; 
 

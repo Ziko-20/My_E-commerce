@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ShoppingCart, Search, Funnel } from 'lucide-react'
 import { useTranslation } from 'react-i18next';
-import Navbar from '../Layouts/Navbar';
+import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
@@ -133,4 +133,3 @@ const Products = () => {
   );
 };
 
-export default Products;

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import { ArrowLeft, ShoppingCart, Star } from 'lucide-react';
 
-import Navbar from '../Layouts/Navbar'; 
+import Navbar from '../../components/Navbar';
 
 const ProductDetail = () => {
 
